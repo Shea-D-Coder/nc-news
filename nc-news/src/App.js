@@ -12,3 +12,16 @@ export function getArticles() {
         return articles 
     })
 }
+
+export function getArticleById(article_id) {
+  return fetch(`${baseUrl}/api/articles/${article_id}`)
+    .then((res) => {
+        if (!res.ok) {
+            return Promise.reject({status: res.status,msg: "Failed to fetch articles",});
+        }
+        return res.json();
+    })
+    .then (({article})=> {
+        return article 
+    })
+}
