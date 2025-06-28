@@ -13,7 +13,7 @@ function ArticleContent ({article}){
   
   return (
     <li className = "card">
-    <h3>{title}</h3>
+    <h2>{title}</h2>
      {article_img_url ? (
         <img src={article_img_url} alt={`image of ${title}`}/>
       ) : (
@@ -24,7 +24,7 @@ function ArticleContent ({article}){
     <p> <b>by:</b> {author}</p>
     <p> <b>Published:</b> {new Date(created_at).toLocaleDateString()}</p>
     <p> <b>Votes:</b>{ votes}</p>
-    <p> <b>Comments:</b> {comment_count}</p>
+    <p> <b>Comments:</b>{comment_count}</p>
     </li>
   );
 

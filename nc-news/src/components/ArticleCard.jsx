@@ -22,9 +22,9 @@ function ArticleCard ({article}){
       )}
       </Link>
     <h3>{title}</h3>
-    <p> <b>Author:</b> {author}</p>
+    <p> <b>By:</b> {author}</p>
     <p> <b>Topic:</b> {topic}</p>
-    <p> <b>Votes:</b>{ votes}</p>
+    <p> <b>Votes:</b> {votes}</p>
     <p> <b>Comments:</b> {comment_count}</p>
     <p> <b>Published:</b> {new Date(created_at).toLocaleDateString()}</p>
     </li>

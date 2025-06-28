@@ -1,8 +1,12 @@
-function CommentList (){
+import CommentCard from "./CommentCard";
+
+function CommentList ({comments, setComments}){
   return (
-    <section>
-    
-    </section>
+    <ul>
+       {comments.map((comments) => (
+        <CommentCard key={comments.comment_id} comments={comments} setComments={setComments}/>
+       ))}
+    </ul>
   );
 };
 
