@@ -4,6 +4,7 @@ import CommentList from "./CommentList";
 import CommentAdder from "./CommentAdder";
 
 function CommentsSection ({article_id}){
+  const currentUser = "cooljmessy"
   const [comments, setComments] = useState([])
   const [displayComments, setDisplayComments] = useState(false)
   
@@ -26,8 +27,13 @@ function CommentsSection ({article_id}){
 
     {displayComments && (
       <>
-      <CommentList comments={comments} setComments={setComments}/>
-      <CommentAdder article_id={article_id} setComments={setComments}/>
+      <CommentList 
+        comments={comments} 
+        setComments={setComments}
+        currentUser={currentUser}/>
+      <CommentAdder 
+        article_id={article_id} 
+        setComments={setComments}/>
       </>
     )}    
     </div>

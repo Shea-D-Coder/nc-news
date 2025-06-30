@@ -81,3 +81,14 @@ export function postComment(article_id, username, body) {
         return comment
     })
 }
+
+export function deleteComment(comment_id) {
+  return fetch(`${baseUrl}/api/comments/${comment_id}`,{
+    method: "DELETE",
+  })
+  .then((res) => {
+    if (!res.ok) {
+        return Promise.reject({status: res.status,msg: "Failed to delete comment",});
+        }
+    })   
+}
