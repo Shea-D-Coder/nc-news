@@ -30,7 +30,7 @@ export function getCommentsByArticleId(article_id) {
   return fetch(`${baseUrl}/api/articles/${article_id}/comments`)
     .then((res) => {
         if (!res.ok) {
-            return Promise.reject({status: res.status,msg: "Failed to fetch articles",});
+            return Promise.reject({status: res.status,msg: "Failed to fetch comments",});
         }
         return res.json();
     })
@@ -51,11 +51,33 @@ export function patchVotes(article_id, voteChange) {
 })
     .then((res) => {
         if (!res.ok) {
-            return Promise.reject({status: res.status,msg: "Failed to fetch articles",});
+            return Promise.reject({status: res.status,msg: "Failed to update vote",});
         }
         return res.json();
     })
     .then (({article})=> {
         return article 
+    })
+}
+
+export function postComment(article_id, username, body) {
+  return fetch(`${baseUrl}/api/articles/${article_id}/comments`,{
+    method: "POST",
+    headers: {
+        "Content-type": "application/json"
+    },
+    body: JSON.stringify({
+        username,
+        body
+    }),
+})
+    .then((res) => {
+        if (!res.ok) {
+            return Promise.reject({status: res.status,msg: "Failed to post comment",});
+        }
+        return res.json();
+    })
+    .then (({comment})=> {
+        return comment
     })
 }

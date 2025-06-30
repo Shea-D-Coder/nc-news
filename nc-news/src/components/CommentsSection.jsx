@@ -1,10 +1,35 @@
+import { useState, useEffect } from "react";
+import { getCommentsByArticleId } from "../App";
 import CommentList from "./CommentList";
+import CommentAdder from "./CommentAdder";
 
-function CommentsSection ({comments, setComments}){
+function CommentsSection ({article_id}){
+  const [comments, setComments] = useState([])
+  const [displayComments, setDisplayComments] = useState(false)
+  
+  useEffect(() => {
+    getCommentsByArticleId(article_id)
+    .then((comments) => {
+      setComments(comments)
+    })   
+  }, [article_id])
+
+  const toggleComments = () => {
+    setDisplayComments((current) =>!current)
+  }
+
   return (
     <div>
-    <h3>Comments</h3>
-        <CommentList comments={comments} setComments={setComments}/>
+    <button onClick={toggleComments}>
+      {displayComments ? "Hide Comment" : "Show Comments"}
+    </button>
+
+    {displayComments && (
+      <>
+      <CommentList comments={comments} setComments={setComments}/>
+      <CommentAdder article_id={article_id} setComments={setComments}/>
+      </>
+    )}    
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { patchVotes,getArticleById } from "../App";
+import { patchVotes} from "../App";
 
 const VoteControl = ({article_id}) => {
   const [voteCount, setVoteCount] = useState(0);
